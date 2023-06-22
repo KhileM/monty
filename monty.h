@@ -22,9 +22,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -37,29 +37,29 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /**
-* struct bus_s - variables -args, file, line content
+* struct file_line_content_s - variables -args, file, line content
 * @arg: A pointer to a character (char) representing a value.
 * @file: pointer to monty file
 * @content: A pointer to a character (char) representing the line content.
-* @lifi: An integer (int) flag used to indicate a change between stack and queue operations.
+* @lifi: An integer (int) flag used to indicate a change between
+* stack and queue operations.
 *
 * Description: carries values and data through the program.
 *
 */
-typedef struct bus_s
+
+typedef struct file_line_content_s
 {
 	char *arg;
 	FILE *file;
 	char *content;
 	int lifi;
-}  bus_t;
-
-extern bus_t bus;
+}  file_line_content_t;
 
 void function_push(stack_t **head, unsigned int number);
 void function_pall(stack_t **head, unsigned int number);

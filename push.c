@@ -10,31 +10,31 @@
  */
 void function_push(stack_t **head, unsigned int counter)
 {
-	int i, m = 0, flag = 0;
+	int n, j = 0, flag = 0;
 
-	if (bus.arg)
+	if (file_line_content.arg)
 	{
-		if (bus.arg[0] == '-')
-			m++;
-		for (; bus.arg[m] != '\0'; m++)
+		if (file_line_content.arg[0] == '-')
+			j++;
+		for (; file_line_content.arg[j] != '\0'; j++)
 		{
-			if (bus.arg[m] > 57 || bus.arg[m] < 48)
+			if (file_line_content.arg[j] > 57 || file_line_content.arg[j] < 48)
 				flag = 1; }
 		if (flag == 1)
 		{ fprintf(stderr, "L%d: usage: push integer\n", counter);
-			fclose(bus.file);
-			free(bus.content);
+			fclose(file_line_content.file);
+			free(file_line_content.content);
 			free_stack(*head);
 			exit(EXIT_FAILURE); }}
 	else
 	{ fprintf(stderr, "L%d: usage: push integer\n", counter);
-		fclose(bus.file);
-		free(bus.content);
+		fclose(file_line_content.file);
+		free(file_line_content.content);
 		free_stack(*head);
 		exit(EXIT_FAILURE); }
-	i = atoi(bus.arg);
-	if (bus.lifi == 0)
-		addnode(head, i);
+	n = atoi(file_line_content.arg);
+	if (file_line_content.lifi == 0)
+		addnode(head, n);
 	else
-		addqueue(head, i);
+		addqueue(head, n);
 }
