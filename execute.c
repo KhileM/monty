@@ -1,27 +1,34 @@
 #include "monty.h"
 
 /**
- * execute - executes the corresponding Monty opcode based
- * on the content of the line.
- * @stack: head linked list - stack
- * @counter: line_counter
- * @file: poiner to monty file
- * @content: line content
- * Return: no return
- */
+* execute - function that executes the opcode
+* @stack: head stack linked list
+* @counter: line count
+* @file: pointer to monty file stream
+* @content: line content
+*
+* Return: nothing
+*/
 int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 {
 	instruction_t opst[] = {
-		{"push", function_push}, {"pall", function_pall}, {"pint", function_pint},
-		{"pop", function_pop},
-		{"swap", function_swap},
-		{"add", add_stack},
-		{"nop", function_nop},
-		{"queue", function_queue},
-		{"stack", function_stack},
-		{NULL, NULL}
-	};
-
+				{"push", f_push}, {"pall", f_pall}, {"pint", f_pint},
+				{"pop", f_pop},
+				{"swap", f_swap},
+				{"add", f_add},
+				{"nop", f_nop},
+				{"sub", f_sub},
+				{"div", f_div},
+				{"mul", f_mul},
+				{"mod", f_mod},
+				{"pchar", f_pchar},
+				{"pstr", f_pstr},
+				{"rotl", f_rotl},
+				{"rotr", f_rotr},
+				{"queue", f_queue},
+				{"stack", f_stack},
+				{NULL, NULL}
+				};
 	unsigned int i = 0;
 	char *op;
 
