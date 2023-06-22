@@ -51,14 +51,15 @@ typedef struct instruction_s
 * Description: carries values and data through the program.
 *
 */
-typedef struct MontyBus {
-    char *arg;
-    FILE *file;
-    char *content;
-    int lifi;
-} MontyBus;
+typedef struct bus_s
+{
+	char *arg;
+	FILE *file;
+	char *content;
+	int lifi;
+}  bus_t;
 
-extern MontyBus montyBus;
+extern bus_t bus;
 
 void function_push(stack_t **head, unsigned int number);
 void function_pall(stack_t **head, unsigned int number);
@@ -68,6 +69,11 @@ void function_swap(stack_t **head, unsigned int counter);
 void add_stack(stack_t **head, unsigned int counter);
 void function_nop(stack_t **head, unsigned int counter);
 void addnode(stack_t **head, int n);
+void function_queue(stack_t **head, unsigned int counter);
+void function_stack(stack_t **head, unsigned int counter);
+void addqueue(stack_t **head, int n);
+void free_stack(stack_t *head);
+
 
 char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
 ssize_t getstdin(char **lineptr, int file);
